@@ -26,7 +26,7 @@ class ProductFinder:
         return None
     
     def __find_in_sqlite(self, product_name: str) -> tuple:
-        product = self.__product_repo.find_by_name(product_name)
+        product = self.__product_repo.find_product_by_name(product_name)
         if not product: 
             raise Exception("Product not found")
         

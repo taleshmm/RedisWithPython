@@ -1,21 +1,24 @@
 from flask import Blueprint, request, jsonify
+from src.http_types.http_request import HttpRequest
+from src.main.composer.product_creator_composer import product_creator_composer
+from src.main.composer.product_finder_composer import product_finder_composer
 
 products_routes_bp = Blueprint("products_routes", __name__)
 
 @products_routes_bp.route("/products", methods=["POST"])
 def insert_product():
-    body = request.get_json()
-    name = body.get("name")
-    price = body.get("price")
-    quantity = body.get("quantity")
+    http_request = HttpRequest(body=request.json)
+    product_creator = product_creator_composer()
+    http_response = product_creator.create(http_request)
     
-    return jsonify({
-        "type": "PRODUCT",
-        "count": 1,
-        "message": "Product created successfully"
-    }), 201
+    return jsonify(http_response.body), http_response.status_code
     
-@products_routes_bp.route("/products/<string:product_name>", methods=["GET"])
+    
+@products_routes_bp.route("/products/<product_name>", methods=["GET"])
 def get_product(product_name):
-    return jsonify({"data": product_name
-    }), 200
+    http_request = HttpRequest(params={"product_name": product_name})
+    product_finder = product_finder_composer()
+    http_response = product_finder.find_by_name(http_request)
+    
+    return jsonify(http_response.body), http_response.status_code
+   

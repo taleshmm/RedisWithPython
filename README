@@ -1,6 +1,4 @@
-
-
-
+````markdown
 # Redis com Python
 
 Projeto simples e didático feito com Python que demonstra como integrar o Redis com o SQLite para otimizar o acesso, armazenamento e criação de dados.
@@ -49,7 +47,7 @@ pip install -r requirements.txt
 > Se não houver `requirements.txt`, instale manualmente:
 >
 > ```bash
-> pip install redis
+> pip install redis flask pytest
 > ```
 
 ### Configuração necessária
@@ -63,6 +61,7 @@ Você deve **criar seu próprio arquivo de banco de dados SQLite** (por exemplo:
 > ```python
 > conn = sqlite3.connect('db.sqlite3')
 > ```
+
 Crie uma tabela com a estrutura, como:
 
 ```sql
@@ -87,8 +86,7 @@ redis.StrictRedis(host='localhost', port=6379, db=0)
 * Buscar dados no Redis (cache)
 * Buscar dados no SQLite (persistência)
 * Armazenar dados encontrados no SQLite dentro do Redis
-* Criar novos registros no SQLite e adicione no Redis (temporariamente)
-
+* Criar novos registros no SQLite e adicionar no Redis (temporariamente)
 
 ## 📚 Tecnologias utilizadas
 
@@ -105,4 +103,5 @@ redis.StrictRedis(host='localhost', port=6379, db=0)
 * Simular comportamentos comuns em sistemas reais
 * Aplicar conceitos de leitura, escrita e invalidação de cache
 
+```
 

@@ -1,4 +1,3 @@
-````markdown
 # Redis com Python
 
 Projeto simples e didático feito com Python que demonstra como integrar o Redis com o SQLite para otimizar o acesso, armazenamento e criação de dados.
@@ -102,6 +101,4 @@ redis.StrictRedis(host='localhost', port=6379, db=0)
 * Integrar Redis com SQLite de forma simples
 * Simular comportamentos comuns em sistemas reais
 * Aplicar conceitos de leitura, escrita e invalidação de cache
-
-```
 
